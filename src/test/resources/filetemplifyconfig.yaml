@@ -1,19 +1,18 @@
 ---
- destinationPath: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators
  fileNameTemplate: <%=${key}%>
  fileContentTemplate: <%=${key}%>
  folderNameTemplate: ${key}
  folders:
  - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate
-   destinationName: functionalmodule
+   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\functionalmodule\templates
  - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate\fmtemplate-entity-service-mysql
-   destinationName: fmmysqlentity
+   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\fmmysqlentity\templates
  - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate\fmtemplate-application-api
-   destinationName: fmapi
+   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\fmapi\templates
  - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate-ms
-   destinationName: microservice
+   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\microservice\templates
  - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate-ms\fmtemplate-api
-   destinationName: msapi
+   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\msapi\templates
  placeholders:
  - key: fmtemplate
    value: fmname

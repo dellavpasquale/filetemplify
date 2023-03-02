@@ -26,7 +26,7 @@ public class FileTemplify {
 		StringTemplify stringTemplify = new StringTemplify(fileTemplifyConfig.getPlaceholders(), fileTemplifyConfig.getFileNameTemplate(), fileTemplifyConfig.getFileContentTemplate(), fileTemplifyConfig.getFolderNameTemplate());
 		
 		for (Folder folder : fileTemplifyConfig.getFolders()) {
-			FolderTemplify fileTemplify = new FolderTemplify(folder, fileTemplifyConfig.getDestinationPath(), fileTemplifyFilter, stringTemplify);
+			FolderTemplify fileTemplify = new FolderTemplify(folder, fileTemplifyFilter, stringTemplify);
 			fileTemplify.generate();
 		}
 	}

@@ -20,17 +20,17 @@ public class FolderTemplify {
 	private FileTemplifyFilter fileTemplifyFilter;
 	private StringTemplify stringTemplify;
 
-	public FolderTemplify(Folder folder, String destinationFolder, FileTemplifyFilter fileTemplifyFilter, StringTemplify stringTemplify) throws IOException, FileTemplifyException {
-		if (destinationFolder == null || destinationFolder.trim().isEmpty()) {
-			throw new FileTemplifyException("No destination folder defined!", null);
-		}
+	public FolderTemplify(Folder folder, FileTemplifyFilter fileTemplifyFilter, StringTemplify stringTemplify) throws IOException, FileTemplifyException {
 		if (folder == null || folder.getPath() == null || folder.getPath().trim().isEmpty()) {
 			throw new FileTemplifyException("No folder path defined!", null);
 		}
-		if(destinationFolder.startsWith(folder.getPath())) {
+		if (folder == null || folder.getDestination() == null || folder.getDestination().trim().isEmpty()) {
+			throw new FileTemplifyException("No destination folder path defined!", null);
+		}
+		if(folder.getDestination().startsWith(folder.getPath())) {
 			throw new FileTemplifyException("Destination folder is a source subfolder!", null);
 		}
-		rootFolder = destinationFolder + File.separator + folder.getDestinationName();
+		rootFolder = folder.getDestination();
 		sourceFolder = folder.getPath();
 		this.fileTemplifyFilter = fileTemplifyFilter;
 		this.stringTemplify = stringTemplify;

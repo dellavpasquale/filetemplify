@@ -4,21 +4,12 @@ import java.util.List;
 
 public class FileTemplifyConfig {
 
-	private String destinationPath;
 	private String fileNameTemplate;
 	private String fileContentTemplate;
 	private String folderNameTemplate;
     private List<Folder> folders;
     private List<Placeholder> placeholders;
     private List<String> excludes;
-
-    public String getDestinationPath() {
-        return destinationPath;
-    }
-
-    public void setDestinationPath(String destinationPath) {
-        this.destinationPath = destinationPath;
-    }
 
     public String getFileNameTemplate() {
 		return fileNameTemplate;
@@ -70,7 +61,7 @@ public class FileTemplifyConfig {
 
     public static class Folder {
         private String path;
-        private String destinationName;
+        private String destination;
 
         public String getPath() {
             return path;
@@ -80,12 +71,12 @@ public class FileTemplifyConfig {
             this.path = path;
         }
 
-        public String getDestinationName() {
-            return destinationName;
+        public String getDestination() {
+            return destination;
         }
 
-        public void setDestinationName(String destinationName) {
-            this.destinationName = destinationName;
+        public void setDestination(String destination) {
+            this.destination = destination;
         }
     }
     
