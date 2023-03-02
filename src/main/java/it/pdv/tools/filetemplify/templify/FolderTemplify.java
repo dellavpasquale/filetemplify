@@ -15,7 +15,7 @@ import it.pdv.tools.filetemplify.templify.StringTemplify.FileTemplifyResourceTyp
 
 public class FolderTemplify {
 
-	private String rootFolder;
+	private String destinationFolder;
 	private String sourceFolder;
 	private FileTemplifyFilter fileTemplifyFilter;
 	private StringTemplify stringTemplify;
@@ -30,15 +30,28 @@ public class FolderTemplify {
 		if(folder.getDestination().startsWith(folder.getPath())) {
 			throw new FileTemplifyException("Destination folder is a source subfolder!", null);
 		}
-		rootFolder = folder.getDestination();
-		sourceFolder = folder.getPath();
+		String folderName = getFolderName(folder.getPath());
+		if(folderName == null) {
+			throw new FileTemplifyException("Folder path doesn't exist!: " +folder.getPath(), null);
+		}
+		this.sourceFolder = folder.getPath();
+		this.destinationFolder = stringTemplify.templify(folder.getDestination() + File.separator + folderName, FileTemplifyResourceType.FOLDER_NAME);
 		this.fileTemplifyFilter = fileTemplifyFilter;
 		this.stringTemplify = stringTemplify;
 	}
 
+	private String getFolderName(String path) {
+		String result = null;
+		File folder = new File(path);
+		if(folder.isDirectory()) {
+			result = folder.getName();
+		}
+		return result;
+	}
+
 	public void generate() throws IOException, FileTemplifyException {
-		initDestinationFolder(sourceFolder, rootFolder);
-		process(rootFolder);
+		initDestinationFolder(sourceFolder, destinationFolder);
+		process(destinationFolder);
 	}
 
 	private void initDestinationFolder(String sourceFolder, String destinationFolder) throws IOException, FileTemplifyException {
@@ -48,7 +61,6 @@ public class FolderTemplify {
 
 	private void cleanDestination(String destinationFolder) throws IOException, FileTemplifyException {
 		FileUtils.deleteDirectory(new File(destinationFolder));
-		FileUtils.deleteDirectory(new File(stringTemplify.templify(destinationFolder, FileTemplifyResourceType.FOLDER_NAME)));
 	}
 
 	public void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation) throws IOException {
