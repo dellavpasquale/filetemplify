@@ -11,7 +11,13 @@ public class FileTemplify {
 	
 	private FileTemplifyConfig fileTemplifyConfig;
 
-	public FileTemplify(FileTemplifyConfig fileTemplifyConfig) {
+	public FileTemplify(FileTemplifyConfig fileTemplifyConfig) throws FileTemplifyException {
+		if (fileTemplifyConfig == null) {
+			throw new FileTemplifyException("No configuration defined!", null);
+		}
+		if (fileTemplifyConfig.getFolders() == null || fileTemplifyConfig.getFolders().isEmpty()) {
+			throw new FileTemplifyException("No folder defined!", null);
+		}
 		this.fileTemplifyConfig = fileTemplifyConfig;
 	}
 	
