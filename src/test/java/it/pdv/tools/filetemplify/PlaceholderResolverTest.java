@@ -65,18 +65,6 @@ class PlaceholderResolverTest {
 	}
 	
 	@Test
-	void testResolvePlaceholderWithoutValue() throws FileTemplifyException {
-		List<Placeholder> placeholders = new ArrayList<>();
-		Placeholder p = new Placeholder();
-		p.setKey("s");
-		placeholders.add(p);
-		StringTemplify resolver = new StringTemplify(placeholders, null , null, null);
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
-			resolver.templify("string", FileTemplifyResourceType.FILE_CONTENT);
-		});
-	}
-	
-	@Test
 	void testResolveNoPlaceholder() throws FileTemplifyException {
 		List<Placeholder> placeholders = new ArrayList<>();
 		Placeholder p = new Placeholder();
@@ -98,6 +86,17 @@ class PlaceholderResolverTest {
 		StringTemplify resolver = new StringTemplify(placeholders, null , null, null);
 		String result = resolver.templify("string", FileTemplifyResourceType.FILE_CONTENT);
 		assertEquals("result", result);
+	}
+	
+	@Test
+	void testResolvePlaceholderWithoutValue() throws FileTemplifyException {
+		List<Placeholder> placeholders = new ArrayList<>();
+		Placeholder p = new Placeholder();
+		p.setKey("string");
+		placeholders.add(p);
+		StringTemplify resolver = new StringTemplify(placeholders, null , null, null);
+		String result = resolver.templify("AstringA", FileTemplifyResourceType.FILE_CONTENT);
+		assertEquals("AstringA", result);
 	}
 	
 	@Test
