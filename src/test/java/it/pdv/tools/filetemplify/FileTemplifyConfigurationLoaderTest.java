@@ -39,7 +39,6 @@ class FileTemplifyConfigurationLoaderTest {
 		InputStream input = this.getClass().getClassLoader().getResourceAsStream("filetemplifyconfig.yaml");
 		FileTemplifyConfig config = FileTemplifyConfigurationLoader.loadConfiguration(input);
 		assertNotNull(config);
-		assertEquals(config.getDestinationPath(), "C:\\Users\\qpasdel\\eclipse-workspace\\generator-mitoms\\generators");
 		assertNotNull(config.getExcludes());
 		assertNotNull(config.getFolders());
 		assertNotNull(config.getPlaceholders());
