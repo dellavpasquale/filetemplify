@@ -48,10 +48,11 @@ public class StringTemplify {
 			if (placeHolder.getKey() == null || placeHolder.getKey().trim().isEmpty()) {
 				throw new FileTemplifyException("Placeholder without key defined!", null);
 			}
-			if (placeHolder.getValue() == null || placeHolder.getValue().trim().isEmpty()) {
-				throw new FileTemplifyException("Placeholder without value defined!", null);
+			String value = placeHolder.getValue();
+			if (value == null || value.trim().isEmpty()) {
+				value = placeHolder.getKey();
 			}
-			result = result.replaceAll(placeHolder.getKey(), getReplacementByTemplate(placeHolder.getValue(), fileTemplifyResourceType));
+			result = result.replaceAll(placeHolder.getKey(), getReplacementByTemplate(value, fileTemplifyResourceType));
 		}
 
 		return result;
