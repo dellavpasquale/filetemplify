@@ -3,16 +3,16 @@
  fileContentTemplate: <%=${key}%>
  folderNameTemplate: ${key}
  folders:
- - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate
-   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\functionalmodule\templates
- - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate\fmtemplate-entity-service-mysql
-   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\fmmysqlentity\templates
- - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate\fmtemplate-application-api
-   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\fmapi\templates
- - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate-ms
-   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\microservice\templates
- - path: C:\Users\qpasdel\eclipse-workspace\fmtemplate-ms\fmtemplate-api
-   destination: C:\Users\qpasdel\eclipse-workspace\generator-mitoms\generators\msapi\templates
+ - path: .\fmtemplate
+   destination: .\functionalmodule\templates
+ - path: .\fmtemplate\fmtemplate-entity-service-mysql
+   destination: \fmmysqlentity\templates
+ - path: .\fmtemplate\fmtemplate-application-api
+   destination: .\fmapi\templates
+ - path: .\fmtemplate-ms
+   destination: .\microservice\templates
+ - path: .\fmtemplate-ms\fmtemplate-api
+   destination: .\msapi\templates
  placeholders:
  - key: fmtemplate
    value: fmname
