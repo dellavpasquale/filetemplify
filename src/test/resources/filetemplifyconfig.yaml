@@ -4,34 +4,10 @@
  folderNameTemplate: ${key}
  folders:
  - path: .\fmtemplate
-   destination: .\functionalmodule\templates
- - path: .\fmtemplate\fmtemplate-entity-service-mysql
-   destination: \fmmysqlentity\templates
- - path: .\fmtemplate\fmtemplate-application-api
-   destination: .\fmapi\templates
- - path: .\fmtemplate-ms
-   destination: .\microservice\templates
- - path: .\fmtemplate-ms\fmtemplate-api
-   destination: .\msapi\templates
+   destination: .\target
  placeholders:
  - key: fmtemplate
    value: fmname
- - key: FmTemplate
-   value: FmName
  - key: fmdomain
-   value: domainname
- - key: FmDomainEntity
-   value: DomainEntityName            
- - key: fmDomainEntity
-   value: domainEntityName
- - key: fmdomainentity
-   value: domainentityname
- - key: fm_database_table
-   value: fm_database_table
  excludes:
- - .git
- - target    
- - bin    
- - fmtemplate-entity-service-mysql
- - fmtemplate-application-api
- - fmtemplate-api                                          
+ - "*.txt"                                        

@@ -15,7 +15,7 @@ public class FileTemplifyConfigurationLoader {
 			throw new FileTemplifyException("Config file is not valid!", e);
 		}
 		if(config == null) {
-			throw new FileTemplifyException("Config file is not valid!", null);
+			throw new FileTemplifyException("Config file is not valid!");
 		}
 		return config;
 	}

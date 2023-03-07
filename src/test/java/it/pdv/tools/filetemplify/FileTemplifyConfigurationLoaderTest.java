@@ -1,5 +1,6 @@
 package it.pdv.tools.filetemplify;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.FileNotFoundException;
@@ -12,25 +13,28 @@ class FileTemplifyConfigurationLoaderTest {
 
 	@Test
 	void testLoadConfigurationNull() {
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
+		Exception exception = Assertions.assertThrows(FileTemplifyException.class, () -> {
 			FileTemplifyConfigurationLoader.loadConfiguration(null);
 		});
+		assertEquals("Config file is not valid!", exception.getMessage());
 	}
 
 	@Test
 	void testLoadConfigurationEmpty() {
 		InputStream input = this.getClass().getClassLoader().getResourceAsStream("fileempty.yaml");
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
+		Exception exception = Assertions.assertThrows(FileTemplifyException.class, () -> {
 			FileTemplifyConfigurationLoader.loadConfiguration(input);
 		});
+		assertEquals("Config file is not valid!", exception.getMessage());
 	}
 
 	@Test
 	void testLoadConfigurationNotValid() {
 		InputStream input = this.getClass().getClassLoader().getResourceAsStream("filenotvalid.yaml");
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
+		Exception exception = Assertions.assertThrows(FileTemplifyException.class, () -> {
 			FileTemplifyConfigurationLoader.loadConfiguration(input);
 		});
+		assertEquals("Config file is not valid!", exception.getMessage());
 	}
 	
 	@Test

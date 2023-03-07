@@ -17,9 +17,10 @@ class PlaceholderResolverTest {
 	
 	@Test
 	void testResolveWithoutPlaceholders() {
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
+		Exception exception = Assertions.assertThrows(FileTemplifyException.class, () -> {
 			 new StringTemplify(null, null, null, null);
 		});
+		assertEquals("No placeholders defined!", exception.getMessage());
 	}
 	
 	@Test
@@ -28,9 +29,10 @@ class PlaceholderResolverTest {
 		Placeholder p = new Placeholder();
 		placeholders.add(p);
 		StringTemplify resolver = new StringTemplify(placeholders, null , null, null);
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
+		Exception exception = Assertions.assertThrows(FileTemplifyException.class, () -> {
 			resolver.templify(null, null);
 		});
+		assertEquals("No FileTemplify resource type specified", exception.getMessage());
 	}
 
 	@Test
@@ -59,9 +61,10 @@ class PlaceholderResolverTest {
 		Placeholder p = new Placeholder();
 		placeholders.add(p);
 		StringTemplify resolver = new StringTemplify(placeholders, null , null, null);
-		Assertions.assertThrows(FileTemplifyException.class, () -> {
+		Exception exception = Assertions.assertThrows(FileTemplifyException.class, () -> {
 			resolver.templify("string", FileTemplifyResourceType.FILE_CONTENT);
 		});
+		assertEquals("Placeholder without key defined!", exception.getMessage());
 	}
 	
 	@Test
