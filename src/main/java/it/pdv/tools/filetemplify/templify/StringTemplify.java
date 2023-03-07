@@ -20,7 +20,7 @@ public class StringTemplify {
 	public StringTemplify(List<Placeholder> placeholders, String fileNameTemplate, String fileContentTemplate,
 			String folderNameTemplate) throws FileTemplifyException {
 		if (placeholders == null || placeholders.isEmpty()) {
-			throw new FileTemplifyException("No placeholders defined!", null);
+			throw new FileTemplifyException("No placeholders defined!");
 		}
 		this.placeholders = placeholders;
 		this.fileNameTemplate = fileNameTemplate;
@@ -30,7 +30,7 @@ public class StringTemplify {
 
 	public String templify(String s, FileTemplifyResourceType fileTemplifyResourceType) throws FileTemplifyException {
 		if (fileTemplifyResourceType == null) {
-			throw new FileTemplifyException("No FileTemplify resource type specified", null);
+			throw new FileTemplifyException("No FileTemplify resource type specified");
 		}
 		if (s != null && !s.trim().isEmpty()) {
 			String result = new String(s);
@@ -46,7 +46,7 @@ public class StringTemplify {
 		String result = new String(s);
 		for (Placeholder placeHolder : placeholders) {
 			if (placeHolder.getKey() == null || placeHolder.getKey().trim().isEmpty()) {
-				throw new FileTemplifyException("Placeholder without key defined!", null);
+				throw new FileTemplifyException("Placeholder without key defined!");
 			}
 			String value = placeHolder.getValue();
 			if (value == null || value.trim().isEmpty()) {

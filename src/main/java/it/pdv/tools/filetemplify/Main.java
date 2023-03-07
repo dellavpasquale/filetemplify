@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException, FileTemplifyException {
 		if (args == null || args.length != 1) {
-			throw new FileTemplifyException("Config file is not valid!", null);
+			throw new FileTemplifyException("Config file is not valid!");
 		}
 		String configFilePath = args[0];
 		

@@ -7,5 +7,9 @@ public class FileTemplifyException extends Exception {
 	public FileTemplifyException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	
+	public FileTemplifyException(String message) {
+		super(message, null);
+	}
 
 }

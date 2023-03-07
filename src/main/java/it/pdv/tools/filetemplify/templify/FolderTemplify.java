@@ -22,17 +22,17 @@ public class FolderTemplify {
 
 	public FolderTemplify(Folder folder, FileTemplifyFilter fileTemplifyFilter, StringTemplify stringTemplify) throws IOException, FileTemplifyException {
 		if (folder == null || folder.getPath() == null || folder.getPath().trim().isEmpty()) {
-			throw new FileTemplifyException("No folder path defined!", null);
+			throw new FileTemplifyException("No folder path defined!");
 		}
 		if (folder == null || folder.getDestination() == null || folder.getDestination().trim().isEmpty()) {
-			throw new FileTemplifyException("No destination folder path defined!", null);
+			throw new FileTemplifyException("No destination folder path defined!");
 		}
 		if(folder.getDestination().startsWith(folder.getPath())) {
-			throw new FileTemplifyException("Destination folder is a source subfolder!", null);
+			throw new FileTemplifyException("Destination folder is a source subfolder!");
 		}
 		String folderName = getFolderName(folder.getPath());
 		if(folderName == null) {
-			throw new FileTemplifyException("Folder path doesn't exist!: " +folder.getPath(), null);
+			throw new FileTemplifyException("Folder path doesn't exist!: " +folder.getPath());
 		}
 		this.sourceFolder = folder.getPath();
 		this.destinationFolder = stringTemplify.templify(folder.getDestination() + File.separator + folderName, FileTemplifyResourceType.FOLDER_NAME);
