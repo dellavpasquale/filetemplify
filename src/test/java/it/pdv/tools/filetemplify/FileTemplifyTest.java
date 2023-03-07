@@ -174,6 +174,8 @@ class FileTemplifyTest {
 			fileTemplify.templify();
 		});
 		assertEquals("Folder path doesn't exist!: " + pathname, exception.getMessage());
+		
+		FileUtils.delete(file);
 	}
 	
 	@Test
