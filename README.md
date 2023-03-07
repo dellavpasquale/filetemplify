@@ -18,7 +18,7 @@ The project behavior is driven by the *yaml* configuration file passed as an arg
 
 Here is an example:
  
-	fileNameTemplate: <%=${key}%>
+	fileNameTemplate: R${key}
 	fileContentTemplate: <%=${key}%>
 	folderNameTemplate: ${key}
 	folders:

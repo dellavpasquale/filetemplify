@@ -1,5 +1,5 @@
 ---
- fileNameTemplate: <%=${key}%>
+ fileNameTemplate: R${key}
  fileContentTemplate: <%=${key}%>
  folderNameTemplate: ${key}
  folders:

@@ -108,10 +108,11 @@ public class FolderTemplify {
 	}
 
 	private void renameFile(File file, FileTemplifyResourceType fileTemplifyResourceType) throws FileTemplifyException {
-		boolean renamed = file.renameTo(new File(file.getParentFile().getAbsolutePath() + File.separator
-				+ stringTemplify.templify(file.getName(), fileTemplifyResourceType)));
+		String destinationFilePath = file.getParentFile().getAbsolutePath() + File.separator
+				+ stringTemplify.templify(file.getName(), fileTemplifyResourceType);
+		boolean renamed = file.renameTo(new File(destinationFilePath));
 		if(!renamed) {
-			throw new FileTemplifyException("Unable to rename file: " + file.getAbsolutePath());
+			throw new FileTemplifyException("Unable to rename file: " + destinationFilePath);
 		}
 	}
 
