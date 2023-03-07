@@ -91,19 +91,22 @@ public class FolderTemplify {
 
 	private void replaceInFile(File file) throws IOException, FileTemplifyException {
 		StringBuilder newContent = new StringBuilder();
+		FileWriter writer = null;
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(file));
-				FileWriter writer = new FileWriter(file);) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
 			String line = reader.readLine();
 			while (line != null) {
 				String oldLine = line + System.lineSeparator();
 				newContent.append(stringTemplify.templify(oldLine, FileTemplifyResourceType.FILE_CONTENT));
 				line = reader.readLine();
 			}
+			writer = new FileWriter(file);
 
 			writer.write(newContent.toString());
-		} catch (Exception e) {
-			throw new FileTemplifyException("Error occurs during replace file content!", e);
+		} finally {
+			if (writer != null) {
+				writer.close();
+			}
 		}
 	}
 

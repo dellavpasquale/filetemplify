@@ -3,8 +3,8 @@
  fileContentTemplate: <%=${key}%>
  folderNameTemplate: ${key}
  folders:
- - path: .\fmtemplate
-   destination: .\target
+ - path: .\src\test\resources\fmtemplate
+   destination: .\src\test\resources\target
  placeholders:
  - key: fmtemplate
    value: fmname

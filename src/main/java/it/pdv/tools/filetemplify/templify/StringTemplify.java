@@ -10,7 +10,7 @@ public class StringTemplify {
 
 	public enum FileTemplifyResourceType {
 		FILE_NAME, FOLDER_NAME, FILE_CONTENT
-	};
+	}
 
 	private List<Placeholder> placeholders;
 	private String fileNameTemplate;
@@ -33,7 +33,7 @@ public class StringTemplify {
 			throw new FileTemplifyException("No FileTemplify resource type specified");
 		}
 		if (s != null && !s.trim().isEmpty()) {
-			String result = new String(s);
+			String result = s;
 			result = resolvePlaceholders(result, fileTemplifyResourceType);
 			return result;
 		} else {
@@ -43,7 +43,7 @@ public class StringTemplify {
 
 	private String resolvePlaceholders(String s, FileTemplifyResourceType fileTemplifyResourceType)
 			throws FileTemplifyException {
-		String result = new String(s);
+		String result = s;
 		for (Placeholder placeHolder : placeholders) {
 			if (placeHolder.getKey() == null || placeHolder.getKey().trim().isEmpty()) {
 				throw new FileTemplifyException("Placeholder without key defined!");
@@ -58,7 +58,7 @@ public class StringTemplify {
 		return result;
 	}
 
-	private String getReplacementByTemplate(String value, FileTemplifyResourceType fileTemplifyResourceType) throws FileTemplifyException {
+	private String getReplacementByTemplate(String value, FileTemplifyResourceType fileTemplifyResourceType) {
 		String replace = null;
 		switch (fileTemplifyResourceType) {
 		case FILE_NAME:

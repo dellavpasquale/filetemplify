@@ -1,12 +1,19 @@
 package it.pdv.tools.filetemplify;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -167,6 +174,26 @@ class FileTemplifyTest {
 			fileTemplify.templify();
 		});
 		assertEquals("Folder path doesn't exist!: " + pathname, exception.getMessage());
+	}
+	
+	@Test
+	void testTemplify() throws IOException, FileTemplifyException {
+		InputStream input = this.getClass().getClassLoader().getResourceAsStream("filetemplifyconfig.yaml");
+		FileTemplifyConfig config = FileTemplifyConfigurationLoader.loadConfiguration(input);
+		
+		FileTemplify fileTemplify = new FileTemplify(config);
+		fileTemplify.templify();
+		
+		BufferedReader result = new BufferedReader(new FileReader(".\\src\\test\\resources\\target\\fmname\\Rfmname-configuration.properties"));
+		assertNotNull(result);
+		assertEquals("prop=<%=fmdomain%>", result.readLine());
+		
+		Assertions.assertThrows(FileNotFoundException.class, () -> {
+			new FileInputStream(".\\src\\test\\resources\\target\\fmname\\Rfmname-exclude.txt");
+		});
+		
+		result.close();
+		FileUtils.deleteDirectory(new File(".\\src\\test\\resources\\target"));
 	}
 
 }

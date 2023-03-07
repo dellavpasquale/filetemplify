@@ -5,6 +5,10 @@ import java.io.InputStream;
 import org.yaml.snakeyaml.Yaml;
 
 public class FileTemplifyConfigurationLoader {
+	
+	private FileTemplifyConfigurationLoader() {
+		// nothing
+	}
 
 	public static FileTemplifyConfig loadConfiguration(InputStream inputStream) throws FileTemplifyException {
 		FileTemplifyConfig config = null;
